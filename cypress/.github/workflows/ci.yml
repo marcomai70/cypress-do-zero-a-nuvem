@@ -1,26 +1,20 @@
 
-name: Cypress E2E Tests
+name: Cypress Tests
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
-  cypress-run:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      
+      - uses: actions/setup-node@v4
         with:
           node-version: 18
-          cache: 'npm'
-
+          
       - name: Install dependencies
-        run: npm ci
-
-      - name: Start server and run tests
-        uses: cypress-io/github-action@v6
-        with:
-          start: npx http-server src -p 3000
-          wait-on: 'http://localhost:3000'
+        run: npm install
+      
+      - name: Run Cypress tests
+        run: npx cypress run --config-file cypress-do-zero-a-nuvem/cypress.config.js --project cypress-do-zero-a-nuvem

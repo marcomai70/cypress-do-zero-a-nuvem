@@ -4,8 +4,10 @@
   "description": "Curso Cypress do Zero à Nuvem",
   "scripts": {
     "test": "cypress run",
+    "tete:cloud": "cypress run --record --key 6vkr6w",
     "cy:open": "cypress open"
   },
+
   "devDependencies": {
     "cypress": "^13.12.0",
     "http-server": "^14.1.1",
